@@ -1,0 +1,45 @@
+
+
+
+<div class="card">
+    <div class="card-body table-responsive">
+        <table class="table table-bordered mb-0 text-center"
+        *ngIf="studentsArr.length > 0; else noStudents">
+            <thead>
+                <tr>
+                   <th>Sr No</th>
+                   <th>Full Name</th>
+                   <th>Email</th>
+                   <th>Contact</th>
+                   <th>Is Active</th>
+                   <th>Edit</th>
+                   <th>Remove</th> 
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let std of studentsArr; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{std.fname}} {{std.lname}}</td>
+                    <td>{{std.email}}</td>
+                    <td>{{std.contact}}</td>
+                    <td>{{std.isActive ? 'Yes' : 'No'}}</td>
+                    <td>
+                        <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+                    </td>
+                    <td>
+                        <button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<ng-template #noStudents>
+    <p class="alert alert-info">
+        No Student Data add Yet!!!
+    </p>
+</ng-template>
+
