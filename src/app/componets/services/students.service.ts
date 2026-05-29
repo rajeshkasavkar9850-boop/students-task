@@ -13,7 +13,7 @@ export class StudentsService {
     lname : 'Kasavkar',
     email : 'rajesh@gmail.com',
     contact : 9876543210,
-    stdId : 'std101',
+    stdId : '101',
     isActive : true
   },
 
@@ -22,7 +22,7 @@ export class StudentsService {
     lname : 'Sharma',
     email : 'rahul@gmail.com',
     contact : 9876543211,
-    stdId : 'std102',
+    stdId : '102',
     isActive : true
   },
 
@@ -31,7 +31,7 @@ export class StudentsService {
     lname : 'Patil',
     email : 'amit@gmail.com',
     contact : 9876543212,
-    stdId : 'std103',
+    stdId : '103',
     isActive : false
   }
 ];
@@ -62,4 +62,16 @@ export class StudentsService {
 
 
   // RemoveStudent
+   removeStd(id:string):Observable<IRes<Istudent>>{
+     let GET_INDEX = this.stdArr.findIndex(s => s.stdId === id);
+    let removedStd = this.stdArr.splice(GET_INDEX,1)
+
+     return of({
+      msg : `The student with id ${id} remove successfully!!`,
+      data : removedStd[0]
+      
+     })
+    
+   }
+
 }

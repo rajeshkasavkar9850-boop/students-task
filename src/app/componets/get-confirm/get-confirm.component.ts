@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-get-confirm',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./get-confirm.component.scss']
 })
 export class GetConfirmComponent implements OnInit {
-
-  constructor() { }
+  data ! : string
+    msg : string 
+  constructor(
+     @Inject(MAT_DIALOG_DATA) data : string,
+    private _matDialogRef : MatDialogRef<GetConfirmComponent>
+  ) { 
+    this.msg = data
+  }
 
   ngOnInit(): void {
+  }
+
+   onClose(flag : boolean){
+    this._matDialogRef.close(flag)
   }
 
 }
