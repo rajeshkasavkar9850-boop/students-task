@@ -25,7 +25,8 @@
                     <td>{{std.contact}}</td>
                     <td>{{std.isActive ? 'Yes' : 'No'}}</td>
                     <td>
-                        <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+                        <button (click)="onEdit(std)"
+                         mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
                     </td>
                     <td>
                         <button 

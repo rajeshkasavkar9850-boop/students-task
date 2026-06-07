@@ -61,4 +61,8 @@ private _matDialog : MatDialog
 
     
   }
+
+  onEdit(std : Istudent){
+  //  this._studentService.editStdSub$.next(std)
+  }
 }
