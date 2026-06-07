@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IRes, IstdRes, Istudent } from '../models/students';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +35,15 @@ export class StudentsService {
     isActive : false
   }
 ];
+
+
+private editStdSub$ : Subject<Istudent> = new Subject()
+editstdObs$: Observable<Istudent> = this.editStdSub$.asObservable()
   constructor() { }
 
+  emitEditStd(std:Istudent){
+    this.editStdSub$.next(std)
+  }
 
   //  FetchStudent
  fetchStudent():Observable<Istudent[]>{
